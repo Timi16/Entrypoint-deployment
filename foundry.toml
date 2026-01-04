@@ -9,8 +9,12 @@ via_ir = true
 evm_version = "shanghai"
 
 [rpc_endpoints]
-avalanche_fuji = "https://avalanche-fuji.drpc.org"
-avalanche_mainnet = "https://avalanche.drpc.org"
+# Avalanche Fuji Testnet
+avalanche_fuji = "https://avalanche-fuji-c-chain-rpc.publicnode.com"
+
+# Avalanche Mainnet (Multiple options)
+avalanche_mainnet = "https://endpoints.omniatech.io/v1/avax/mainnet/public"
+avalanche_mainnet_2 = "https://api.avax.network/ext/bc/C/rpc"
 
 [etherscan]
 avalanche_fuji = { key = "${ETHERSCAN_API_KEY}", url = "https://api-testnet.snowtrace.io/api" }
