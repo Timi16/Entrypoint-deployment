@@ -1,0 +1,362 @@
+{
+	"id": "574ef84eb5d8fb6f76597927de5eae0d",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.28",
+	"solcLongVersion": "0.8.28+commit.7893614a",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/interfaces/INonceManager1.sol": {
+				"content": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.8.28;\n\ninterface INonceManager {\n\n    /**\n     * Return the next nonce for this sender.\n     * Within a given key, the nonce values are sequenced (starting with zero, and incremented by one on each userop)\n     * But UserOp with different keys can come with arbitrary order.\n     *\n     * @param sender the account address\n     * @param key the high 192 bit of the nonce\n     * @return nonce a full nonce to pass for next UserOp with this sender.\n     */\n    function getNonce(address sender, uint192 key)\n    external view returns (uint256 nonce);\n\n    /**\n     * Manually increment the nonce of the sender.\n     * This method is exposed just for completeness..\n     * Account does NOT need to call it, neither during validation, nor elsewhere,\n     * as the EntryPoint will update the nonce regardless.\n     * Possible use-case is call it with various keys to \"initialize\" their nonces to one, so that future\n     * UserOperations will not pay extra for the first transaction with a given key.\n     */\n    function incrementNonce(uint192 key) external;\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/interfaces/INonceManager1.sol": {
+				"INonceManager": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "sender",
+									"type": "address"
+								},
+								{
+									"internalType": "uint192",
+									"name": "key",
+									"type": "uint192"
+								}
+							],
+							"name": "getNonce",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "nonce",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint192",
+									"name": "key",
+									"type": "uint192"
+								}
+							],
+							"name": "incrementNonce",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint192\",\"name\":\"key\",\"type\":\"uint192\"}],\"name\":\"getNonce\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint192\",\"name\":\"key\",\"type\":\"uint192\"}],\"name\":\"incrementNonce\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getNonce(address,uint192)\":{\"params\":{\"key\":\"the high 192 bit of the nonce\",\"sender\":\"the account address\"},\"returns\":{\"nonce\":\"a full nonce to pass for next UserOp with this sender.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getNonce(address,uint192)\":{\"notice\":\"Return the next nonce for this sender. Within a given key, the nonce values are sequenced (starting with zero, and incremented by one on each userop) But UserOp with different keys can come with arbitrary order.\"},\"incrementNonce(uint192)\":{\"notice\":\"Manually increment the nonce of the sender. This method is exposed just for completeness.. Account does NOT need to call it, neither during validation, nor elsewhere, as the EntryPoint will update the nonce regardless. Possible use-case is call it with various keys to \\\"initialize\\\" their nonces to one, so that future UserOperations will not pay extra for the first transaction with a given key.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/INonceManager1.sol\":\"INonceManager\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"simpleCounterForLoopUncheckedIncrement\":true,\"yul\":false},\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/interfaces/INonceManager1.sol\":{\"keccak256\":\"0x2c7f79c265b6011bcf41a4fa1b3a90459f8e43da015364cf440b01b1295962d3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://56886697f065638288b323eb1fd90a101300f8bac8f389a1502b55f5fdcdbc23\",\"dweb:/ipfs/QmNySS1mcGrZJYjR1WedznjofDQ1Hz7DBPxn6ZDJw83jrz\"]}},\"version\":1}",
+					"devdoc": {
+						"kind": "dev",
+						"methods": {
+							"getNonce(address,uint192)": {
+								"params": {
+									"key": "the high 192 bit of the nonce",
+									"sender": "the account address"
+								},
+								"returns": {
+									"nonce": "a full nonce to pass for next UserOp with this sender."
+								}
+							}
+						},
+						"version": 1
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"getNonce(address,uint192)": {
+								"notice": "Return the next nonce for this sender. Within a given key, the nonce values are sequenced (starting with zero, and incremented by one on each userop) But UserOp with different keys can come with arbitrary order."
+							},
+							"incrementNonce(uint192)": {
+								"notice": "Manually increment the nonce of the sender. This method is exposed just for completeness.. Account does NOT need to call it, neither during validation, nor elsewhere, as the EntryPoint will update the nonce regardless. Possible use-case is call it with various keys to \"initialize\" their nonces to one, so that future UserOperations will not pay extra for the first transaction with a given key."
+							}
+						},
+						"version": 1
+					},
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"evm": {
+						"bytecode": {
+							"object": ""
+						},
+						"deployedBytecode": {
+							"object": ""
+						},
+						"methodIdentifiers": {
+							"getNonce(address,uint192)": "35567e1a",
+							"incrementNonce(uint192)": "0bd28e3b"
+						}
+					},
+					"irOptimized": ""
+				}
+			}
+		},
+		"sources": {
+			"contracts/interfaces/INonceManager1.sol": {
+				"id": 0,
+				"ast": {
+					"absolutePath": "contracts/interfaces/INonceManager1.sol",
+					"exportedSymbols": {
+						"INonceManager": [
+							18
+						]
+					},
+					"id": 19,
+					"license": "GPL-3.0",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"0.8",
+								".28"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "36:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "INonceManager",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 18,
+							"linearizedBaseContracts": [
+								18
+							],
+							"name": "INonceManager",
+							"nameLocation": "71:13:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"documentation": {
+										"id": 2,
+										"nodeType": "StructuredDocumentation",
+										"src": "92:416:0",
+										"text": " Return the next nonce for this sender.\n Within a given key, the nonce values are sequenced (starting with zero, and incremented by one on each userop)\n But UserOp with different keys can come with arbitrary order.\n @param sender the account address\n @param key the high 192 bit of the nonce\n @return nonce a full nonce to pass for next UserOp with this sender."
+									},
+									"functionSelector": "35567e1a",
+									"id": 11,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getNonce",
+									"nameLocation": "522:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 4,
+												"mutability": "mutable",
+												"name": "sender",
+												"nameLocation": "539:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "531:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 3,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "531:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 6,
+												"mutability": "mutable",
+												"name": "key",
+												"nameLocation": "555:3:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "547:11:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint192",
+													"typeString": "uint192"
+												},
+												"typeName": {
+													"id": 5,
+													"name": "uint192",
+													"nodeType": "ElementaryTypeName",
+													"src": "547:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint192",
+														"typeString": "uint192"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "530:29:0"
+									},
+									"returnParameters": {
+										"id": 10,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 9,
+												"mutability": "mutable",
+												"name": "nonce",
+												"nameLocation": "595:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "587:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 8,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "587:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "586:15:0"
+									},
+									"scope": 18,
+									"src": "513:89:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 12,
+										"nodeType": "StructuredDocumentation",
+										"src": "608:449:0",
+										"text": " Manually increment the nonce of the sender.\n This method is exposed just for completeness..\n Account does NOT need to call it, neither during validation, nor elsewhere,\n as the EntryPoint will update the nonce regardless.\n Possible use-case is call it with various keys to \"initialize\" their nonces to one, so that future\n UserOperations will not pay extra for the first transaction with a given key."
+									},
+									"functionSelector": "0bd28e3b",
+									"id": 17,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "incrementNonce",
+									"nameLocation": "1071:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 15,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 14,
+												"mutability": "mutable",
+												"name": "key",
+												"nameLocation": "1094:3:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "1086:11:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint192",
+													"typeString": "uint192"
+												},
+												"typeName": {
+													"id": 13,
+													"name": "uint192",
+													"nodeType": "ElementaryTypeName",
+													"src": "1086:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint192",
+														"typeString": "uint192"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1085:13:0"
+									},
+									"returnParameters": {
+										"id": 16,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1107:0:0"
+									},
+									"scope": 18,
+									"src": "1062:46:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 19,
+							"src": "61:1049:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "36:1075:0"
+				}
+			}
+		},
+		"errors": [],
+		"version": "0.8.28",
+		"long_version": "0.8.28+commit.7893614a.Emscripten.clang",
+		"revive_version": "0.1.0-dev.12+commit.66f9a4d.llvm-18.1.8"
+	}
+}

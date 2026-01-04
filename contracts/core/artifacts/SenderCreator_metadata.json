@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "initCode",
+						"type": "bytes"
+					}
+				],
+				"name": "createSender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"createSender(bytes)": {
+					"params": {
+						"initCode": "- The initCode value from a UserOp. contains 20 bytes of factory address,                   followed by calldata."
+					},
+					"returns": {
+						"sender": " - The returned address of the created account, or zero address on failure."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createSender(bytes)": {
+					"notice": "Call the \"initCode\" factory to create and return the sender account address."
+				}
+			},
+			"notice": "Helper contract for EntryPoint, to call userOp.initCode from a \"neutral\" address, which is explicitly not the entryPoint itself.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/core/SenderCreator.sol": "SenderCreator"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"details": {
+				"constantOptimizer": false,
+				"cse": false,
+				"deduplicate": false,
+				"inliner": false,
+				"jumpdestRemover": false,
+				"orderLiterals": false,
+				"peephole": false,
+				"simpleCounterForLoopUncheckedIncrement": true,
+				"yul": false
+			},
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/core/SenderCreator.sol": {
+			"keccak256": "0xeb95afb6e4cf921c1ed105ecb9f549ca46bee57f68acd1d2f4f84607ac0db5c5",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://d2ac91562f1fcabe4809a1b4256895efebcf46f89e08336a6c09ee2d29733238",
+				"dweb:/ipfs/QmPsQnPcCzioPwVtUhxkbnwKPC1bnhHSbAwK9GXVpjN3mH"
+			]
+		}
+	},
+	"version": 1
+}

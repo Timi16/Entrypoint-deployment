@@ -1,0 +1,332 @@
+{
+	"id": "be30f3d6ea2d40303a888a2566881ce9",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.28",
+	"solcLongVersion": "0.8.28+commit.7893614a",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/interfaces/PackedUserOperation.sol": {
+				"content": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.8.28;\n\n/**\n * User Operation struct\n * @param sender                - The sender account of this request.\n * @param nonce                 - Unique value the sender uses to verify it is not a replay.\n * @param initCode              - If set, the account contract will be created by this constructor/\n * @param callData              - The method call to execute on this account.\n * @param accountGasLimits      - Packed gas limits for validateUserOp and gas limit passed to the callData method call.\n * @param preVerificationGas    - Gas not calculated by the handleOps method, but added to the gas paid.\n *                                Covers batch overhead.\n * @param gasFees               - packed gas fields maxPriorityFeePerGas and maxFeePerGas - Same as EIP-1559 gas parameters.\n * @param paymasterAndData      - If set, this field holds the paymaster address, verification gas limit, postOp gas limit and paymaster-specific extra data\n *                                The paymaster will pay for the transaction instead of the sender.\n * @param signature             - Sender-verified signature over the entire request, the EntryPoint address and the chain ID.\n */\nstruct PackedUserOperation {\n    address sender;\n    uint256 nonce;\n    bytes initCode;\n    bytes callData;\n    bytes32 accountGasLimits;\n    uint256 preVerificationGas;\n    bytes32 gasFees;\n    bytes paymasterAndData;\n    bytes signature;\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"sources": {
+			"contracts/interfaces/PackedUserOperation.sol": {
+				"id": 0,
+				"ast": {
+					"absolutePath": "contracts/interfaces/PackedUserOperation.sol",
+					"exportedSymbols": {
+						"PackedUserOperation": [
+							21
+						]
+					},
+					"id": 22,
+					"license": "GPL-3.0",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"0.8",
+								".28"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "36:23:0"
+						},
+						{
+							"canonicalName": "PackedUserOperation",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "61:1164:0",
+								"text": " User Operation struct\n @param sender                - The sender account of this request.\n @param nonce                 - Unique value the sender uses to verify it is not a replay.\n @param initCode              - If set, the account contract will be created by this constructor/\n @param callData              - The method call to execute on this account.\n @param accountGasLimits      - Packed gas limits for validateUserOp and gas limit passed to the callData method call.\n @param preVerificationGas    - Gas not calculated by the handleOps method, but added to the gas paid.\n                                Covers batch overhead.\n @param gasFees               - packed gas fields maxPriorityFeePerGas and maxFeePerGas - Same as EIP-1559 gas parameters.\n @param paymasterAndData      - If set, this field holds the paymaster address, verification gas limit, postOp gas limit and paymaster-specific extra data\n                                The paymaster will pay for the transaction instead of the sender.\n @param signature             - Sender-verified signature over the entire request, the EntryPoint address and the chain ID."
+							},
+							"id": 21,
+							"members": [
+								{
+									"constant": false,
+									"id": 4,
+									"mutability": "mutable",
+									"name": "sender",
+									"nameLocation": "1267:6:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1259:14:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_address",
+										"typeString": "address"
+									},
+									"typeName": {
+										"id": 3,
+										"name": "address",
+										"nodeType": "ElementaryTypeName",
+										"src": "1259:7:0",
+										"stateMutability": "nonpayable",
+										"typeDescriptions": {
+											"typeIdentifier": "t_address",
+											"typeString": "address"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 6,
+									"mutability": "mutable",
+									"name": "nonce",
+									"nameLocation": "1287:5:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1279:13:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint256",
+										"typeString": "uint256"
+									},
+									"typeName": {
+										"id": 5,
+										"name": "uint256",
+										"nodeType": "ElementaryTypeName",
+										"src": "1279:7:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint256",
+											"typeString": "uint256"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 8,
+									"mutability": "mutable",
+									"name": "initCode",
+									"nameLocation": "1304:8:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1298:14:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 7,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1298:5:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 10,
+									"mutability": "mutable",
+									"name": "callData",
+									"nameLocation": "1324:8:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1318:14:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 9,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1318:5:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 12,
+									"mutability": "mutable",
+									"name": "accountGasLimits",
+									"nameLocation": "1346:16:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1338:24:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes32",
+										"typeString": "bytes32"
+									},
+									"typeName": {
+										"id": 11,
+										"name": "bytes32",
+										"nodeType": "ElementaryTypeName",
+										"src": "1338:7:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes32",
+											"typeString": "bytes32"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 14,
+									"mutability": "mutable",
+									"name": "preVerificationGas",
+									"nameLocation": "1376:18:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1368:26:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint256",
+										"typeString": "uint256"
+									},
+									"typeName": {
+										"id": 13,
+										"name": "uint256",
+										"nodeType": "ElementaryTypeName",
+										"src": "1368:7:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint256",
+											"typeString": "uint256"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 16,
+									"mutability": "mutable",
+									"name": "gasFees",
+									"nameLocation": "1408:7:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1400:15:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes32",
+										"typeString": "bytes32"
+									},
+									"typeName": {
+										"id": 15,
+										"name": "bytes32",
+										"nodeType": "ElementaryTypeName",
+										"src": "1400:7:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes32",
+											"typeString": "bytes32"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 18,
+									"mutability": "mutable",
+									"name": "paymasterAndData",
+									"nameLocation": "1427:16:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1421:22:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 17,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1421:5:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 20,
+									"mutability": "mutable",
+									"name": "signature",
+									"nameLocation": "1455:9:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "1449:15:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 19,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1449:5:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "PackedUserOperation",
+							"nameLocation": "1233:19:0",
+							"nodeType": "StructDefinition",
+							"scope": 22,
+							"src": "1226:241:0",
+							"visibility": "public"
+						}
+					],
+					"src": "36:1432:0"
+				}
+			}
+		},
+		"errors": []
+	}
+}

@@ -1,0 +1,610 @@
+{
+	"id": "eb0649b1183a697595281bd71cda5be4",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.28",
+	"solcLongVersion": "0.8.28+commit.7893614a",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/interfaces/IAccountExecute.sol": {
+				"content": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.8.28;\n\nimport \"./PackedUserOperation.sol\";\n\ninterface IAccountExecute {\n    /**\n     * Account may implement this execute method.\n     * passing this methodSig at the beginning of callData will cause the entryPoint to pass the full UserOp (and hash)\n     * to the account.\n     * The account should skip the methodSig, and use the callData (and optionally, other UserOp fields)\n     *\n     * @param userOp              - The operation that was just validated.\n     * @param userOpHash          - Hash of the user's request data.\n     */\n    function executeUserOp(\n        PackedUserOperation calldata userOp,\n        bytes32 userOpHash\n    ) external;\n}\n"
+			},
+			"contracts/interfaces/PackedUserOperation.sol": {
+				"content": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.8.28;\n\n/**\n * User Operation struct\n * @param sender                - The sender account of this request.\n * @param nonce                 - Unique value the sender uses to verify it is not a replay.\n * @param initCode              - If set, the account contract will be created by this constructor/\n * @param callData              - The method call to execute on this account.\n * @param accountGasLimits      - Packed gas limits for validateUserOp and gas limit passed to the callData method call.\n * @param preVerificationGas    - Gas not calculated by the handleOps method, but added to the gas paid.\n *                                Covers batch overhead.\n * @param gasFees               - packed gas fields maxPriorityFeePerGas and maxFeePerGas - Same as EIP-1559 gas parameters.\n * @param paymasterAndData      - If set, this field holds the paymaster address, verification gas limit, postOp gas limit and paymaster-specific extra data\n *                                The paymaster will pay for the transaction instead of the sender.\n * @param signature             - Sender-verified signature over the entire request, the EntryPoint address and the chain ID.\n */\nstruct PackedUserOperation {\n    address sender;\n    uint256 nonce;\n    bytes initCode;\n    bytes callData;\n    bytes32 accountGasLimits;\n    uint256 preVerificationGas;\n    bytes32 gasFees;\n    bytes paymasterAndData;\n    bytes signature;\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/interfaces/IAccountExecute.sol": {
+				"IAccountExecute": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "sender",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nonce",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bytes",
+											"name": "initCode",
+											"type": "bytes"
+										},
+										{
+											"internalType": "bytes",
+											"name": "callData",
+											"type": "bytes"
+										},
+										{
+											"internalType": "bytes32",
+											"name": "accountGasLimits",
+											"type": "bytes32"
+										},
+										{
+											"internalType": "uint256",
+											"name": "preVerificationGas",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bytes32",
+											"name": "gasFees",
+											"type": "bytes32"
+										},
+										{
+											"internalType": "bytes",
+											"name": "paymasterAndData",
+											"type": "bytes"
+										},
+										{
+											"internalType": "bytes",
+											"name": "signature",
+											"type": "bytes"
+										}
+									],
+									"internalType": "struct PackedUserOperation",
+									"name": "userOp",
+									"type": "tuple"
+								},
+								{
+									"internalType": "bytes32",
+									"name": "userOpHash",
+									"type": "bytes32"
+								}
+							],
+							"name": "executeUserOp",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"initCode\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"callData\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"accountGasLimits\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"preVerificationGas\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"gasFees\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"paymasterAndData\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"internalType\":\"struct PackedUserOperation\",\"name\":\"userOp\",\"type\":\"tuple\"},{\"internalType\":\"bytes32\",\"name\":\"userOpHash\",\"type\":\"bytes32\"}],\"name\":\"executeUserOp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"executeUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32)\":{\"params\":{\"userOp\":\"- The operation that was just validated.\",\"userOpHash\":\"- Hash of the user's request data.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"executeUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32)\":{\"notice\":\"Account may implement this execute method. passing this methodSig at the beginning of callData will cause the entryPoint to pass the full UserOp (and hash) to the account. The account should skip the methodSig, and use the callData (and optionally, other UserOp fields)\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IAccountExecute.sol\":\"IAccountExecute\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"details\":{\"constantOptimizer\":false,\"cse\":false,\"deduplicate\":false,\"inliner\":false,\"jumpdestRemover\":false,\"orderLiterals\":false,\"peephole\":false,\"simpleCounterForLoopUncheckedIncrement\":true,\"yul\":false},\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/interfaces/IAccountExecute.sol\":{\"keccak256\":\"0x4671155fdd90368ef04486cd35cea04e9385efa4b5682a1d6bda8c44ec25950f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://cffffbb05f33e8d7fe0f9b9fb7aa638211916f4480c098362552a1978353e3d4\",\"dweb:/ipfs/QmaEe59EfSHJe4wta9LU6HGW7W6zBMcSt69XrtK5WGTuRV\"]},\"contracts/interfaces/PackedUserOperation.sol\":{\"keccak256\":\"0x39c2ca70c150564a75d7199727acaca978a0b984900cffb07ef70a806506eee7\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://2de29a46d45794bb540ec06f86b40404c7ac8b1ef115100d3e1823994e2b0c29\",\"dweb:/ipfs/QmZeNcvqRK77PEFjdKzW11mGYutzkLiqCLQo9aLxyhEfWT\"]}},\"version\":1}",
+					"devdoc": {
+						"kind": "dev",
+						"methods": {
+							"executeUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32)": {
+								"params": {
+									"userOp": "- The operation that was just validated.",
+									"userOpHash": "- Hash of the user's request data."
+								}
+							}
+						},
+						"version": 1
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"executeUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32)": {
+								"notice": "Account may implement this execute method. passing this methodSig at the beginning of callData will cause the entryPoint to pass the full UserOp (and hash) to the account. The account should skip the methodSig, and use the callData (and optionally, other UserOp fields)"
+							}
+						},
+						"version": 1
+					},
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"evm": {
+						"bytecode": {
+							"object": ""
+						},
+						"deployedBytecode": {
+							"object": ""
+						},
+						"methodIdentifiers": {
+							"executeUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32)": "8dd7712f"
+						}
+					},
+					"irOptimized": ""
+				}
+			}
+		},
+		"sources": {
+			"contracts/interfaces/IAccountExecute.sol": {
+				"id": 0,
+				"ast": {
+					"absolutePath": "contracts/interfaces/IAccountExecute.sol",
+					"exportedSymbols": {
+						"IAccountExecute": [
+							12
+						],
+						"PackedUserOperation": [
+							34
+						]
+					},
+					"id": 13,
+					"license": "GPL-3.0",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"0.8",
+								".28"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "36:23:0"
+						},
+						{
+							"absolutePath": "contracts/interfaces/PackedUserOperation.sol",
+							"file": "./PackedUserOperation.sol",
+							"id": 2,
+							"nameLocation": "-1:-1:-1",
+							"nodeType": "ImportDirective",
+							"scope": 13,
+							"sourceUnit": 35,
+							"src": "61:35:0",
+							"symbolAliases": [],
+							"unitAlias": ""
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IAccountExecute",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 12,
+							"linearizedBaseContracts": [
+								12
+							],
+							"name": "IAccountExecute",
+							"nameLocation": "108:15:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "130:460:0",
+										"text": " Account may implement this execute method.\n passing this methodSig at the beginning of callData will cause the entryPoint to pass the full UserOp (and hash)\n to the account.\n The account should skip the methodSig, and use the callData (and optionally, other UserOp fields)\n @param userOp              - The operation that was just validated.\n @param userOpHash          - Hash of the user's request data."
+									},
+									"functionSelector": "8dd7712f",
+									"id": 11,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "executeUserOp",
+									"nameLocation": "604:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 9,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 6,
+												"mutability": "mutable",
+												"name": "userOp",
+												"nameLocation": "656:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "627:35:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_PackedUserOperation_$34_calldata_ptr",
+													"typeString": "struct PackedUserOperation"
+												},
+												"typeName": {
+													"id": 5,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 4,
+														"name": "PackedUserOperation",
+														"nameLocations": [
+															"627:19:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 34,
+														"src": "627:19:0"
+													},
+													"referencedDeclaration": 34,
+													"src": "627:19:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_PackedUserOperation_$34_storage_ptr",
+														"typeString": "struct PackedUserOperation"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 8,
+												"mutability": "mutable",
+												"name": "userOpHash",
+												"nameLocation": "680:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "672:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes32",
+													"typeString": "bytes32"
+												},
+												"typeName": {
+													"id": 7,
+													"name": "bytes32",
+													"nodeType": "ElementaryTypeName",
+													"src": "672:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes32",
+														"typeString": "bytes32"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "617:79:0"
+									},
+									"returnParameters": {
+										"id": 10,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "705:0:0"
+									},
+									"scope": 12,
+									"src": "595:111:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 13,
+							"src": "98:610:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "36:673:0"
+				}
+			},
+			"contracts/interfaces/PackedUserOperation.sol": {
+				"id": 1,
+				"ast": {
+					"absolutePath": "contracts/interfaces/PackedUserOperation.sol",
+					"exportedSymbols": {
+						"PackedUserOperation": [
+							34
+						]
+					},
+					"id": 35,
+					"license": "GPL-3.0",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 14,
+							"literals": [
+								"solidity",
+								"0.8",
+								".28"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "36:23:1"
+						},
+						{
+							"canonicalName": "PackedUserOperation",
+							"documentation": {
+								"id": 15,
+								"nodeType": "StructuredDocumentation",
+								"src": "61:1164:1",
+								"text": " User Operation struct\n @param sender                - The sender account of this request.\n @param nonce                 - Unique value the sender uses to verify it is not a replay.\n @param initCode              - If set, the account contract will be created by this constructor/\n @param callData              - The method call to execute on this account.\n @param accountGasLimits      - Packed gas limits for validateUserOp and gas limit passed to the callData method call.\n @param preVerificationGas    - Gas not calculated by the handleOps method, but added to the gas paid.\n                                Covers batch overhead.\n @param gasFees               - packed gas fields maxPriorityFeePerGas and maxFeePerGas - Same as EIP-1559 gas parameters.\n @param paymasterAndData      - If set, this field holds the paymaster address, verification gas limit, postOp gas limit and paymaster-specific extra data\n                                The paymaster will pay for the transaction instead of the sender.\n @param signature             - Sender-verified signature over the entire request, the EntryPoint address and the chain ID."
+							},
+							"id": 34,
+							"members": [
+								{
+									"constant": false,
+									"id": 17,
+									"mutability": "mutable",
+									"name": "sender",
+									"nameLocation": "1267:6:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1259:14:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_address",
+										"typeString": "address"
+									},
+									"typeName": {
+										"id": 16,
+										"name": "address",
+										"nodeType": "ElementaryTypeName",
+										"src": "1259:7:1",
+										"stateMutability": "nonpayable",
+										"typeDescriptions": {
+											"typeIdentifier": "t_address",
+											"typeString": "address"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 19,
+									"mutability": "mutable",
+									"name": "nonce",
+									"nameLocation": "1287:5:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1279:13:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint256",
+										"typeString": "uint256"
+									},
+									"typeName": {
+										"id": 18,
+										"name": "uint256",
+										"nodeType": "ElementaryTypeName",
+										"src": "1279:7:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint256",
+											"typeString": "uint256"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 21,
+									"mutability": "mutable",
+									"name": "initCode",
+									"nameLocation": "1304:8:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1298:14:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 20,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1298:5:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 23,
+									"mutability": "mutable",
+									"name": "callData",
+									"nameLocation": "1324:8:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1318:14:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 22,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1318:5:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 25,
+									"mutability": "mutable",
+									"name": "accountGasLimits",
+									"nameLocation": "1346:16:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1338:24:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes32",
+										"typeString": "bytes32"
+									},
+									"typeName": {
+										"id": 24,
+										"name": "bytes32",
+										"nodeType": "ElementaryTypeName",
+										"src": "1338:7:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes32",
+											"typeString": "bytes32"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 27,
+									"mutability": "mutable",
+									"name": "preVerificationGas",
+									"nameLocation": "1376:18:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1368:26:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint256",
+										"typeString": "uint256"
+									},
+									"typeName": {
+										"id": 26,
+										"name": "uint256",
+										"nodeType": "ElementaryTypeName",
+										"src": "1368:7:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint256",
+											"typeString": "uint256"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 29,
+									"mutability": "mutable",
+									"name": "gasFees",
+									"nameLocation": "1408:7:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1400:15:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes32",
+										"typeString": "bytes32"
+									},
+									"typeName": {
+										"id": 28,
+										"name": "bytes32",
+										"nodeType": "ElementaryTypeName",
+										"src": "1400:7:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes32",
+											"typeString": "bytes32"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 31,
+									"mutability": "mutable",
+									"name": "paymasterAndData",
+									"nameLocation": "1427:16:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1421:22:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 30,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1421:5:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 33,
+									"mutability": "mutable",
+									"name": "signature",
+									"nameLocation": "1455:9:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 34,
+									"src": "1449:15:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bytes_storage_ptr",
+										"typeString": "bytes"
+									},
+									"typeName": {
+										"id": 32,
+										"name": "bytes",
+										"nodeType": "ElementaryTypeName",
+										"src": "1449:5:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bytes_storage_ptr",
+											"typeString": "bytes"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "PackedUserOperation",
+							"nameLocation": "1233:19:1",
+							"nodeType": "StructDefinition",
+							"scope": 35,
+							"src": "1226:241:1",
+							"visibility": "public"
+						}
+					],
+					"src": "36:1432:1"
+				}
+			}
+		},
+		"errors": [],
+		"version": "0.8.28",
+		"long_version": "0.8.28+commit.7893614a.Emscripten.clang",
+		"revive_version": "0.1.0-dev.12+commit.66f9a4d.llvm-18.1.8"
+	}
+}

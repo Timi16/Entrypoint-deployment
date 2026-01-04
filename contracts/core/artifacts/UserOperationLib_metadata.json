@@ -1,0 +1,112 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "PAYMASTER_DATA_OFFSET",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "PAYMASTER_POSTOP_GAS_OFFSET",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "PAYMASTER_VALIDATION_GAS_OFFSET",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Utility functions helpful when working with UserOperation structs.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/core/UserOperationLib.sol": "UserOperationLib"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"details": {
+				"constantOptimizer": false,
+				"cse": false,
+				"deduplicate": false,
+				"inliner": false,
+				"jumpdestRemover": false,
+				"orderLiterals": false,
+				"peephole": false,
+				"simpleCounterForLoopUncheckedIncrement": true,
+				"yul": false
+			},
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/core/Helpers.sol": {
+			"keccak256": "0x6247e011a6cb0b263b3aa098822977181674d91b62e5bdfe04c6e66f72da25d6",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://ca829a69b3fbc74fec8e140d42a2bf93bc3512609272f031c846470f61f0ab7e",
+				"dweb:/ipfs/QmP3r3MBgAN39KeVB1rCGJWwcBcotNt26ALtAR54poQ1Jc"
+			]
+		},
+		"contracts/core/UserOperationLib.sol": {
+			"keccak256": "0x9d50ece985d35f82e33e5da417595c86fac10449e3d10895d08363d33aad454b",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://b1d11cc364c8bf7ed5388268c895b5ffed16e87dfbcb320ddeeba5e7974315dc",
+				"dweb:/ipfs/QmYSpvjxEjweietQrYZagwQ52ipy7eXx4rwvnTzXKeGeMS"
+			]
+		},
+		"contracts/interfaces/PackedUserOperation.sol": {
+			"keccak256": "0x39c2ca70c150564a75d7199727acaca978a0b984900cffb07ef70a806506eee7",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2de29a46d45794bb540ec06f86b40404c7ac8b1ef115100d3e1823994e2b0c29",
+				"dweb:/ipfs/QmZeNcvqRK77PEFjdKzW11mGYutzkLiqCLQo9aLxyhEfWT"
+			]
+		}
+	},
+	"version": 1
+}
