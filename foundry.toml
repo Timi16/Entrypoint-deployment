@@ -16,6 +16,11 @@ avalanche_fuji = "https://avalanche-fuji-c-chain-rpc.publicnode.com"
 avalanche_mainnet = "https://endpoints.omniatech.io/v1/avax/mainnet/public"
 avalanche_mainnet_2 = "https://api.avax.network/ext/bc/C/rpc"
 
+# 0G Mainnet
+og_mainnet = "https://evmrpc.0g.ai"
+
 [etherscan]
 avalanche_fuji = { key = "${ETHERSCAN_API_KEY}", url = "https://api-testnet.snowtrace.io/api" }
 avalanche_mainnet = { key = "${ETHERSCAN_API_KEY}", url = "https://api.snowtrace.io/api" }
+# 0G does not appear to have a public block explorer API endpoint configured yet
+og_mainnet = { key = "${ETHERSCAN_API_KEY}", url = "https://chainscan.0g.ai" }
